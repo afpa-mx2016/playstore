@@ -14,11 +14,6 @@ namespace PlayList\View;
  * @author lionel
  */
 interface IView {
-    
-   
-    public function setError($error);     
-
-    public function setContent($content);
-    
-    public function render();
+    //@param array $data
+    public function render($data);
 }

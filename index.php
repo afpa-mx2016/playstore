@@ -38,10 +38,11 @@ $content = ob_get_contents();
 
 ob_end_clean();
 
+
+
+$data = array("errors"=>$controller->getErrors(),
+	"content"=>$content);
 //load view
-
 $tpl = new View\MainTemplate();
-$tpl->setContent($content);
-$tpl->setErrors($controller->getErrors());
 
-$tpl->render();
+$tpl->render($data);

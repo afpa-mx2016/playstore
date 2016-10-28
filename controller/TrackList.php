@@ -17,8 +17,8 @@ class TrackList extends Controller {
         $tracks = \PlayList\Dao\TrackStore::getTracks();
         //var_dump($tracks);
         //render view
-        $view->setContent($tracks);
-        $view->render();
+
+        $view->render(array("content"=>$tracks));
     }
     
     

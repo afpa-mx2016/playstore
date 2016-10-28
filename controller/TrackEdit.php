@@ -27,8 +27,8 @@ class TrackEdit extends Controller {
 
                 //render view
                 $view = new \PlayList\View\TrackFormView(); 
-                $view->setContent($track);
-                $view->render();
+
+                $view->render(array('content'=> $track));
 
             }
 

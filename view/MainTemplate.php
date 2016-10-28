@@ -12,23 +12,8 @@ namespace PlayList\View;
  * @author lionel
  */
 class MainTemplate {
-    
-    private $content;
-    private $errors;
-    
-    public function setErrors($errors){
-        $this->errors = $errors;
-    }
-    
-    private function hasErrors(){
-        return (isset($this->errors));
-    }
-    
-    public function setContent($content){
-        $this->content = $content;
-    }
-    
-    public function render(){
+       
+    public function render($data){
         
         ?>
 <!DOCTYPE html>
@@ -53,10 +38,10 @@ class MainTemplate {
             
             <?php
             
-                echo $this->content; 
-                if ($this->hasErrors()){
+                echo $data['content']; 
+                if (isset($data['errors'])){
                     echo ' <div class="alert alert-warning" role="alert">
-                    <strong>Warning!</strong>'.$this->error.'</div>';
+                    <strong>Warning!</strong>'.$data['errors'].'</div>';
                     
                 }
             

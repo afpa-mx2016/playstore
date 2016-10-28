@@ -4,21 +4,14 @@ namespace PlayList\View;
 include(dirname(__FILE__).'/IView.php');
 
 class TrackFormView implements IView {
-    private $track;
-
-    
-    public function setContent($track) {
-        $this->track = $track;
-    }
-
-    public function setError($error) {
-        
-    }
 
 
 
-    function render(){
-        if ($this->track->getId()!=null){ //edit mode
+    function render($data){
+
+        $track = $data['content'];
+
+        if ($track->getId()!=null){ //edit mode
             echo '<h1>Modifier titre:</h1>';
         }else{
             echo '<h1>Nouveau titre:</h1>';
@@ -31,16 +24,16 @@ class TrackFormView implements IView {
 
             <div class="form-group">
                 <label class="control-label" for="title">Entrez le titre :</label>
-                <input id="title" class="form-control" type="text" name="title" placeholder="Title" required pattern=".{0,255}" value="<?php echo $this->track->getTitle(); ?>">
+                <input id="title" class="form-control" type="text" name="title" placeholder="Title" required pattern=".{0,255}" value="<?php echo $track->getTitle(); ?>">
             </div>
             <div class="form-group">
                 <label class="control-label" for="author">Entrez l'auteur :</label>
-                <input id="author" class="form-control" type="text" name="author" placeholder="Author" required pattern=".{0,255}" value="<?php echo $this->track->getAuthor(); ?>">
+                <input id="author" class="form-control" type="text" name="author" placeholder="Author" required pattern=".{0,255}" value="<?php echo $track->getAuthor(); ?>">
             </div>
 
             <div class="form-group">
                 <label class="control-label" for="length">Entrez la durée :</label>
-                <input id="length" class="form-control" type="number" min="1" max="1000" name="duration" placeholder="Length in [s]" required value="<?php echo $this->track->getDuration(); ?>">
+                <input id="length" class="form-control" type="number" min="1" max="1000" name="duration" placeholder="Length in [s]" required value="<?php echo $track->getDuration(); ?>">
             </div>
             <div class="form-group text-right">
                 <button class="btn btn-default" onclick="history.back();">Annuler</button>

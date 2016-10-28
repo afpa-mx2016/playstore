@@ -24,6 +24,10 @@ class TrackStore {
         
     }
     
+    /**
+    *
+    *@return last inserted id or -1 if any problem
+    **/
     static function save(Track $track){
         $pdo = DB::getConnection();
         
@@ -33,8 +37,13 @@ class TrackStore {
         $stmt->bindValue(':title', $track->getTitle(), PDO::PARAM_STR);
         $stmt->bindValue(':author', $track->getAuthor(), PDO::PARAM_STR);
         $stmt->bindValue(':duration', $track->getDuration(), PDO::PARAM_INT);
-                
-        return $stmt->execute();
+        $res = $stmt->execute();
+        if ($res){
+            return $pdo->lastInsertId();
+        }else {
+            return -1;
+        }
+        
     }
     
     static function update($track){

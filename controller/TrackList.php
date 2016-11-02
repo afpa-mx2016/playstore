@@ -14,11 +14,20 @@ class TrackList extends Controller {
         
         $view = new \PlayList\View\TrackListView();
         //fetch all tracks
-        $tracks = \PlayList\Dao\TrackStore::getTracks();
+        $searchStr = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
+        if ($searchStr){
+            $tracks = \PlayList\Dao\TrackStore::getTracksByTitle($searchStr);
+        }else{
+             $tracks = \PlayList\Dao\TrackStore::getTracks();
+        }
+        
+        
+        
+       
         //var_dump($tracks);
         //render view
 
-        $view->render(array("content"=>$tracks));
+        $view->render(array("content"=>$tracks, "search"=> $searchStr));
     }
     
     

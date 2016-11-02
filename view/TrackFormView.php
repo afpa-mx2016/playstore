@@ -20,7 +20,7 @@ class TrackFormView implements IView {
         ?>
         
         <form class="" name='musicAdd' action="index.php?action=TrackFormHandler" method="post">
-            <input type="hidden" name="id" value=""/>
+            <input type="hidden" name="id" value="<?php echo $track->getId(); ?>"/>
 
             <div class="form-group">
                 <label class="control-label" for="title">Entrez le titre :</label>

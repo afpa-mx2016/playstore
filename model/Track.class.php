@@ -53,7 +53,6 @@ class Track {
       $this->author = $author;
   }
 
-//  public function __set($name, $value) {}
 
   
     

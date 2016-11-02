@@ -52,10 +52,16 @@ class TrackStore {
 	
 	$stmt = $pdo->prepare('UPDATE track SET title = :title, author = :author, duration = :duration WHERE id = :id');
         
+        $stmt->bindValue(':id', $track->getId(), PDO::PARAM_STR);
         $stmt->bindValue(':title', $track->getTitle(), PDO::PARAM_STR);
         $stmt->bindValue(':author', $track->getAuthor(), PDO::PARAM_STR);
         $stmt->bindValue(':duration', $track->getDuration(), PDO::PARAM_INT);
-        return $stmt->execute();
+        $res = $stmt->execute();
+        if ($res){
+            return $stmt->rowCount() ? true : false;
+        }else{
+            return -1;
+        }
         
     }
     
@@ -90,24 +96,28 @@ class TrackStore {
 			
 	$stmt = $pdo->query($sql);
 
-	//$stmt->setFetchMode(PDO::FETCH_OBJ);
-	
-	
-	//$tracks = array();
-		
-//	// transformer recordset en tableau
-//	while( $ligne = $result->fetch() ) // on récupère la liste 
-//	{
-//            $track = new Track($ligne->id, $ligne->title, $ligne->duration, $ligne->author);
-//            array_push($tracks, $track);
-//	}
         $tracks = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Track::class);
         //var_dump($result);
 	
 	$stmt->closeCursor(); // on ferme le curseur des résultats
 		   
+	return $tracks;
+        
+        
+    }
+    
+    static function  getTracksByTitle($title){
+       // connection BDD
+	$pdo = DB::getConnection();
+			
+	$stmt = $pdo->prepare("SELECT * FROM track WHERE title like :title");
+        $stmt->bindValue(':title', '%'.$title.'%');
+        $stmt->execute();
+        $tracks = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Track::class);
+        //var_dump($result);
 	
-
+	$stmt->closeCursor(); // on ferme le curseur des résultats
+		   
 	return $tracks;
         
         

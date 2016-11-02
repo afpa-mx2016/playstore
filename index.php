@@ -6,28 +6,40 @@ include('config.inc.php');
 include('view/MainTemplate.php');
 
 //default controller
-$ctrl = 'TrackList';
+$ctrl = 'Welcome';
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
 if ($action){
     
-
-    if (!file_exists('controller/'.$action.'.php')){
-       //TODO controller does not exist
-        echo 'pouah, controller:'.$action.' not found';
-        return;
+    if (file_exists('controller/'.$action.'.php')){
+        $ctrl = $action;
     }
-    $ctrl = $action;
+    
     
 }
+
+
+////if accessing protected pages without being logged, redirect to LoginForm
+session_start();
+if (!in_array($ctrl, DMZ) && !isset($_SESSION['user_id'])){
+    //redirect to login
+    header("Location: /index.php?action=LoginForm");
+}
+
+
 
 //load controller definition
 include('controller/'.$ctrl.'.php');
 
 
+
+
 $ctrlClassName = "PlayList\\Controller\\".$ctrl;
 $controller = new $ctrlClassName();
+
+//inject current_ user id 
+$controller->setCurrentUserId($_SESSION['user_id']);
 
 //load output from controllers into memory
 ob_start();
@@ -41,7 +53,9 @@ ob_end_clean();
 
 
 $data = array("errors"=>$controller->getErrors(),
-	"content"=>$content);
+	"content"=>$content, 
+        "current_user" => $_SESSION['current_user']
+        );
 //load view
 $tpl = new View\MainTemplate();
 

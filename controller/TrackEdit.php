@@ -22,7 +22,7 @@ class TrackEdit extends Controller {
             $track = \PlayList\Dao\TrackStore::getTrackById($id);
 
             if (!$track){
-                $this->error = 'something went wrong with edit with id:' + $id;
+                $this->errors = 'something went wrong with edit with id:' + $id;
             }else{
 
                 //render view
@@ -37,7 +37,7 @@ class TrackEdit extends Controller {
 
         }else{
 
-            $error = 'id must not be null';
+            $this->errors = 'id must not be null';
         }
     }
 }

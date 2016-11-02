@@ -10,7 +10,21 @@ class TrackListView implements IView {
     function render($data){
 
         echo '
-        <a type="button" class="btn btn-success btn-lg" href="index.php?action=TrackNew">Ajouter un titre</a>
+         <form action="index.php" method="get">
+            <div class="input-group col-md-12">
+                <input type="hidden" name="action" value="TrackList"/>
+                <input type="text" name="search" class="form-control" placeholder="rechercher" value="'. $data['search'].'"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+                <a type="button" class="btn btn-success pull-right" href="index.php?action=TrackNew">Ajouter un titre</a>
+            </div>
+         </form>
+         
+        
+        
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -26,11 +40,38 @@ class TrackListView implements IView {
 
         foreach ($data['content'] as $track) {
 
-            echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td></td><td>'.$track->getDuration().'</td><td><a href="index.php?action=TrackEdit&id='.$track->getId().'"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a><a href="index.php?action=TrackDelete&id='.$track->getId().'"><span class="glyphicon glyphicon-remove">&nbsp;</span></a></td></tr>';
+            echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td></td><td>'.$track->getDuration().'</td><td><a href="index.php?action=TrackEdit&id='.$track->getId().'" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a><a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-remove">&nbsp;</span></a><a href="#playlist" data-toggle="modal" title="add to playlist"><span class="glyphicon glyphicon-plus">&nbsp;</span></a></td></tr>';
         }
 
         echo '</tbody>
-        </table>';
+        </table>
+        
+         <div id="playlist" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Ajouter à la playlist</h4>
+                </div>
+                <div class="modal-body">
+                  <ul>
+                    <li>pl1</li>
+                    <li>pl1</li>
+                    <li>pl1</li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        ';
     }
 
 }

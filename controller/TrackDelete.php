@@ -16,7 +16,7 @@ class TrackDelete extends Controller {
 
             $ok = \PlayList\Dao\TrackStore::delete($id);
             if (!$ok){
-                $this->errors = 'something went wrong with delete with id:' + $id;
+                $this->errors = 'something went wrong with deleting id:'. $id . ' exist ?';
             }else{
 
                   header("Location: /index.php?action=TrackList",true,303);

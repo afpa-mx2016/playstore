@@ -20,12 +20,23 @@ class PlayList {
     private $id;
     private $name;
     private $description;
+    private $picture;
     private $tracks;
     
     function getId() {
         return $this->id;
     }
+    
+    function getPicture() {
+        return $this->picture;
+    }
 
+    function setPicture($picture) {
+        $this->picture = $picture;
+    }
+
+        
+    
     function getName() {
         return $this->name;
     }

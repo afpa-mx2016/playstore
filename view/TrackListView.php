@@ -40,13 +40,18 @@ class TrackListView implements IView {
 
         foreach ($data['content'] as $track) {
 
-            echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td></td><td>'.$track->getDuration().'</td><td><a href="index.php?action=TrackEdit&id='.$track->getId().'" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a><a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-remove">&nbsp;</span></a><a href="#playlist" data-toggle="modal" title="add to playlist"><span class="glyphicon glyphicon-plus">&nbsp;</span></a></td></tr>';
+            echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td>'
+                    . '</td><td>'.$track->getDuration().'</td>'
+                    . '<td><a href="index.php?action=TrackEdit&id='.$track->getId().'" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>'
+                        . '<a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-remove">&nbsp;</span></a>'
+                        . '<a href="#modal-playlist" data-toggle="modal" class="add-to-playlist" data-id="'.$track->getId().'" title="add to playlist"><span class="glyphicon glyphicon-plus">&nbsp;</span></a>'
+                    . '</td></tr>';
         }
 
         echo '</tbody>
         </table>
         
-         <div id="playlist" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div id="modal-playlist" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
 
               <!-- Modal content-->
@@ -56,20 +61,28 @@ class TrackListView implements IView {
                   <h4 class="modal-title">Ajouter à la playlist</h4>
                 </div>
                 <div class="modal-body">
-                  <ul>
-                    <li>pl1</li>
-                    <li>pl1</li>
-                    <li>pl1</li>
-                  </ul>
+                  <div id="playlist" class="list-group">';
+                foreach ($data['playlists'] as $pl) {
+                   echo '<a data-id="'.$pl->getId().'" class="list-group-item">'.$pl->getName().'</a>';
+                  
+                 }   
+                echo '
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                  <div id="modal-alert-success" class="alert alert-success fade in hidden" aria-hidden="true">
+                    <strong>Success!</strong> Indicates a successful or positive action.
+                  </div>
+                  <div id="modal-alert-warning" class="alert alert-warning fade in hidden">
+                    <strong>Warning!</strong> Indicates a warning that might need attention.
+                  </div>
                 </div>
               </div>
 
             </div>
           </div>
-
+          <script type="text/javascript" src="assets/js/app.js"></script> 
 
         ';
     }

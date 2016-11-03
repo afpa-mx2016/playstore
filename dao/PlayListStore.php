@@ -8,10 +8,13 @@
 
 namespace PlayList\Dao;
 
-require(dirname(__FILE__).'/DB.php');
-require(dirname(__FILE__).'/../model/PlayList.class.php');
+require_once(dirname(__FILE__).'/DB.php');
+
+require_once(dirname(__FILE__).'/../model/PlayList.class.php');
+require_once(dirname(__FILE__).'/../model/Track.class.php');
 
 use \PlayList\Model\PlayList as PlayList;
+
 
 use \PDO as PDO;
 
@@ -22,6 +25,8 @@ use \PDO as PDO;
  */
 class PlayListStore {
    
+
+    
     static function  getPlayLists($userid){
        // connection BDD
 	$pdo = DB::getConnection();
@@ -31,9 +36,49 @@ class PlayListStore {
         $stmt->bindValue(':user_id', $userid);
         $stmt->execute();
 
-	$playLists = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, PlayList::class);
+	$pls = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, PlayList::class);
+		   
+	return $pls;
+          
+    }
+    
+    static function getPlayListById($playlist_id){
+        $pdo = DB::getConnection();
+	
+			
+	$stmt = $pdo->prepare("SELECT * FROM playlist WHERE id = :playlist_id");
+        $stmt->bindValue(':playlist_id', $playlist_id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, PlayList::class);
+	$pl = $stmt->fetch();
+
+
+	return $pl;
+    }
+    
+     static function getTracks($playlist_id){
+        $pdo = DB::getConnection();
+	
+			
+	$stmt = $pdo->prepare("SELECT * FROM track inner join playlist_track on track.id = playlist_track.track_id WHERE playlist_track.playlist_id = :playlist_id");
+        $stmt->bindValue(':playlist_id', $playlist_id);
+        $stmt->execute();
+
+	$playLists = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, \PlayList\Model\Track::class);
 		   
 	return $playLists;
-          
+    }
+    
+    static function addTrack($playlist_id, $track_id){
+        $pdo = DB::getConnection();
+        
+        $stmt = $pdo->prepare('
+            INSERT INTO playlist_track ( playlist_id, track_id)
+                VALUES (:playlist_id, :track_id)');
+        $stmt->bindValue(':playlist_id', $playlist_id, PDO::PARAM_INT);
+        $stmt->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+       
     }
 }

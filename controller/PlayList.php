@@ -9,7 +9,6 @@
 namespace PlayList\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
-
 include(dirname(__FILE__).'/../dao/PlayListStore.php');
 include(dirname(__FILE__).'/../view/PlayListView.php');
 

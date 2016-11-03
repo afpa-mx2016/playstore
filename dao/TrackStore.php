@@ -1,7 +1,8 @@
 <?php
 
 namespace PlayList\Dao;
-require(dirname(__FILE__).'/DB.php');
+
+require_once(dirname(__FILE__).'/DB.php');
 require(dirname(__FILE__).'/../model/Track.class.php');
 
 use \PlayList\Model\Track as Track;

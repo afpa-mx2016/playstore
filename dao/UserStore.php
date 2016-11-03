@@ -29,13 +29,9 @@ class UserStore {
         $stmt->bindValue(':username', $username);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::class);
-	$track = $stmt->fetch();
+	$user = $stmt->fetch();
 
-       
-	$stmt->closeCursor(); // on ferme le curseur des résultats
-		   
-	
 
-	return $track;
+	return $user;
     }
 }

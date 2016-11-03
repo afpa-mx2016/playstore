@@ -9,6 +9,10 @@ include('view/MainTemplate.php');
 $ctrl = 'Welcome';
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+if (!$action) $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
+
+$direct_rendering = filter_input(INPUT_GET, 'direct_rendering', FILTER_VALIDATE_BOOLEAN);
+if (!$direct_rendering) $direct_rendering = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 
 if ($action){
     
@@ -50,13 +54,16 @@ $content = ob_get_contents();
 
 ob_end_clean();
 
-
-
-$data = array("errors"=>$controller->getErrors(),
+if ($direct_rendering){ //don't render with template
+    echo $content;
+}else{
+    $data = array("errors"=>$controller->getErrors(),
 	"content"=>$content, 
         "current_user" => $_SESSION['current_user']
         );
-//load view
-$tpl = new View\MainTemplate();
+    //load view
+    $tpl = new View\MainTemplate();
 
-$tpl->render($data);
+    $tpl->render($data);
+}
+

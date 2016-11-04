@@ -1,14 +1,4 @@
-<?php
-
-namespace PlayList\View;
-
-include(dirname(__FILE__).'/IView.php');
-
-class PlayListItemsView implements IView {
-    
-
-    function render($data){
-        
+<?php        
         $playList = $data['content'];
             echo '<h1>'.$playList->getName().'</h1>';
         ?>
@@ -37,14 +27,4 @@ class PlayListItemsView implements IView {
 
         ?>
         </tbody>
-        </table>
-        
-
-         <?php
-
-
-    }
-
-}
-
-        
+        </table>        

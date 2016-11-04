@@ -9,7 +9,6 @@
 namespace PlayList\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../view/WelcomeView.php');
 
 
 
@@ -18,7 +17,7 @@ class Welcome extends Controller {
     
     public function run(){
         
-        $view = new \PlayList\View\WelcomeView(); 
+        $view = new \PlayList\View\View('WelcomeView'); 
         $view->render(NULL); //
     }
 }

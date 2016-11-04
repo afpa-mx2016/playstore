@@ -1,19 +1,8 @@
-<?php
 
-namespace PlayList\View;
-
-include(dirname(__FILE__).'/IView.php');
-
-class TrackListView implements IView {
-    
-
-    function render($data){
-
-        echo '
          <form action="index.php" method="get">
             <div class="input-group col-md-12">
                 <input type="hidden" name="action" value="TrackList"/>
-                <input type="text" name="search" class="form-control" placeholder="rechercher" value="'. $data['search'].'"/>
+                <input type="text" name="search" class="form-control" placeholder="rechercher" value="<?php echo $data['search']; ?>"/>
                 <span class="input-group-btn">
                     <button class="btn btn-secondary" type="submit">
                         <i class="glyphicon glyphicon-search"></i>
@@ -34,8 +23,10 @@ class TrackListView implements IView {
                     <th>Durée</th>
                     <th></th>
                 </tr>
-            </thead><tbody>
-            ';
+            </thead>
+            <tbody>
+
+        <?php
 
 
         foreach ($data['content'] as $track) {
@@ -47,9 +38,9 @@ class TrackListView implements IView {
                         . '<a href="#modal-playlist" data-toggle="modal" class="add-to-playlist" data-id="'.$track->getId().'" title="add to playlist"><span class="glyphicon glyphicon-plus">&nbsp;</span></a>'
                     . '</td></tr>';
         }
-
-        echo '</tbody>
-        </table>
+        ?>
+            </tbody>
+            </table>
         
          <div id="modal-playlist" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -61,12 +52,13 @@ class TrackListView implements IView {
                   <h4 class="modal-title">Ajouter à la playlist</h4>
                 </div>
                 <div class="modal-body">
-                  <div id="playlist" class="list-group">';
+                  <div id="playlist" class="list-group">
+                <?php
                 foreach ($data['playlists'] as $pl) {
                    echo '<a data-id="'.$pl->getId().'" class="list-group-item">'.$pl->getName().'</a>';
                   
                  }   
-                echo '
+                ?>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -84,9 +76,5 @@ class TrackListView implements IView {
           </div>
           <script type="text/javascript" src="assets/js/app.js"></script> 
 
-        ';
-    }
-
-}
 
         

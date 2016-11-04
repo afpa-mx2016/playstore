@@ -3,7 +3,7 @@
 namespace PlayList;
 
 include('config.inc.php');
-include('view/MainTemplate.php');
+include('view/View.php');
 
 //default controller
 $ctrl = 'Welcome';
@@ -18,6 +18,9 @@ if ($action){
     
     if (file_exists('controller/'.$action.'.php')){
         $ctrl = $action;
+    }else{
+        http_response_code(404);
+        return;
     }
     
     
@@ -43,14 +46,17 @@ $ctrlClassName = "PlayList\\Controller\\".$ctrl;
 $controller = new $ctrlClassName();
 
 //inject current_ user id 
-$controller->setCurrentUserId($_SESSION['user_id']);
+if (isset($_SESSION['user_id'])) {
+    $controller->setCurrentUserId($_SESSION['user_id']);
+    $controller->setCurrentUserName($_SESSION['current_user']);
+}
 
 //load output from controllers into memory
 ob_start();
 
-$controller->run();
+    $controller->run();
 
-$content = ob_get_contents();
+    $content = ob_get_contents();
 
 ob_end_clean();
 
@@ -59,10 +65,10 @@ if ($direct_rendering){ //don't render with template
 }else{
     $data = array("errors"=>$controller->getErrors(),
 	"content"=>$content, 
-        "current_user" => $_SESSION['current_user']
+        "current_user" => $controller->getCurrentUserName()
         );
     //load view
-    $tpl = new View\MainTemplate();
+    $tpl = new View\View('MainTemplate');
 
     $tpl->render($data);
 }

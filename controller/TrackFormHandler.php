@@ -4,7 +4,6 @@ namespace PlayList\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 include(dirname(__FILE__).'/../dao/TrackStore.php');
-include(dirname(__FILE__).'/../view/TrackFormView.php');
 
 
 class TrackFormHandler extends Controller {
@@ -60,7 +59,7 @@ class TrackFormHandler extends Controller {
 
         if($this->hasErrors()){
              //replay form when error occurs
-             $view = new \PlayList\View\TrackFormView(); 
+             $view = new \PlayList\View\View('TrackFormView'); 
              $view->render(
                 array('content'=> $track,
                        'errors'=> $this->errors));

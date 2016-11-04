@@ -1,28 +1,3 @@
-<?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-namespace PlayList\View;
-
-include(dirname(__FILE__).'/IView.php');
-
-/**
- * Description of LoginFormView
- *
- * @author lionel
- */
-class LoginFormView implements IView {
-    
-    
-    //put your code here
-    function render($data) {
-        ?>
-
-      
         <div class="form-container">
            <form method="post" action="index.php?action=LoginFormHandler">
                <h2>Sign in.</h2><hr />
@@ -49,13 +24,3 @@ class LoginFormView implements IView {
                <label>Don't have account yet ! <a href="sign-up.php">Sign Up</a></label>
            </form>
           </div>
-
-
-
-
-        <?php
-    }
-
- 
-
-}

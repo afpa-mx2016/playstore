@@ -5,7 +5,6 @@ namespace PlayList\Controller;
 
 
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../view/TrackFormView.php');
 include(dirname(__FILE__).'/../dao/TrackStore.php');
 
 
@@ -26,7 +25,7 @@ class TrackEdit extends Controller {
             }else{
 
                 //render view
-                $view = new \PlayList\View\TrackFormView(); 
+                $view = new \PlayList\View\View('TrackFormView'); 
 
                 $view->render(array('content'=> $track));
 

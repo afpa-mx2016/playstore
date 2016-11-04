@@ -1,13 +1,4 @@
 <?php
-namespace PlayList\View;
-
-include(dirname(__FILE__).'/IView.php');
-
-class TrackFormView implements IView {
-
-
-
-    function render($data){
 
         $track = $data['content'];
 
@@ -41,7 +32,3 @@ class TrackFormView implements IView {
             </div>
         </form>
         
-        <?php
-        
-    }
-}

@@ -1,21 +1,3 @@
-<?php
-namespace PlayList\View;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of MainTemplate
- *
- * @author lionel
- */
-class MainTemplate {
-       
-    public function render($data){
-        
-        ?>
 <!DOCTYPE html>
 
 <html>
@@ -43,7 +25,7 @@ class MainTemplate {
                     if(!empty($data["current_user"])){ 
                         echo '
                         
-                           <a class="navbar-brand">Welcome '.$data["current_user"].'</a>
+                           <a class="navbar-brand"><em>Welcome '.$data["current_user"].'</em></a>
                            <a href="index.php?action=LogoutHandler" class="navbar-brand"><strong>Logout</strong></a>
                         ';
                     }else{
@@ -61,11 +43,6 @@ class MainTemplate {
             <?php
             
                 echo $data['content']; 
-//                if (!empty($data['errors'])){
-//                    echo ' <div class="alert alert-warning" role="alert">
-//                    <strong>Warning!</strong>'.$data['errors'].'</div>';
-//                    
-//                }
             
             ?>
             
@@ -106,10 +83,6 @@ class MainTemplate {
 
         </body>
 </html>
-<?php
-        
-    }
-}
     
     
 

@@ -9,7 +9,7 @@
 namespace PlayList\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../view/LoginFormView.php');
+
 /**
  * Description of LoginForm
  *
@@ -20,7 +20,7 @@ class LoginForm extends Controller{
     public function run() {
         
         
-        $view = new \PlayList\View\LoginFormView(); 
+        $view = new \PlayList\View\View('LoginFormView'); 
         //$view->setContent(new Track());
         $view->render(NULL); 
         

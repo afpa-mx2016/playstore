@@ -4,6 +4,7 @@ namespace PlayList\Controller;
 
 
 include(dirname(__FILE__).'/IController.php');
+//include('view/View.php');
 
 /**
  * Description of Controller
@@ -15,6 +16,7 @@ abstract class Controller implements \PlayList\Controller\IController {
     
     protected $errors="";
     protected $current_userid;
+    protected $current_username;
       
    
     public function hasErrors(){
@@ -32,7 +34,15 @@ abstract class Controller implements \PlayList\Controller\IController {
        return $this->current_userid;
     }
     
+    function getCurrentUsername() {
+        return $this->current_username;
+    }
 
+    function setCurrentUsername($current_username) {
+        $this->current_username = $current_username;
+    }
+
+    
     public abstract function run();
 
 }

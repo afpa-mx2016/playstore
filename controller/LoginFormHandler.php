@@ -10,7 +10,7 @@ namespace PlayList\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 include(dirname(__FILE__).'/../dao/UserStore.php');
-include(dirname(__FILE__).'/../view/LoginFormView.php');
+
 
 
 /**
@@ -44,7 +44,7 @@ class LoginFormHandler extends Controller{
                     $_SESSION['user_id'] = $user->getId();
                     $_SESSION['current_user'] = $user->getUsername();
 
-                    header("Location: /index.php?action=TrackList",true,303);
+                    header("Location: /index.php?action=PlayList",true,303);
                     
                 }
                 
@@ -61,7 +61,7 @@ class LoginFormHandler extends Controller{
         
         if ($this->hasErrors()){
             //rebuild the form
-            $view = new \PlayList\View\LoginFormView(); 
+            $view = new \PlayList\View\View('LoginFormView'); 
             //$view->setContent(new Track());
             $view->render(array("errors"=> $this->errors)); 
         }

@@ -10,7 +10,7 @@ namespace PlayList\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 include(dirname(__FILE__).'/../dao/PlayListStore.php');
-include(dirname(__FILE__).'/../view/PlayListView.php');
+
 
 /**
  * Description of PlayList
@@ -21,7 +21,7 @@ class PlayList extends Controller{
     //put your code here
     public function run() {
         
-        $view = new \PlayList\View\PlayListView();
+        $view = new \PlayList\View\View('PlayListView');
 
 
         $playlists = \PlayList\Dao\PlayListStore::getPlayLists($this->current_userid);

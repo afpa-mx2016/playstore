@@ -2,6 +2,7 @@
 *playstore practical init php project*
 
 use of interfaces, abstract class, front controller, MVC
+for instance Author and Genre are not defined as entities, will be handled for next release
 
 go to project's directory:
 

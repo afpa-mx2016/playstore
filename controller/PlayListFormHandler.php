@@ -46,8 +46,8 @@ class PlayListFormHandler extends Controller{
 
             // ensure a safe filename
             //$name = preg_replace("/[^A-Z0-9._-]/i", "_", $myFile["name"]);
-            $fileInfo = pathinfo($name);
-            $name = uniqid() . '.' . $fileInfo['extension'];
+            $fileInfo = pathinfo($myFile["name"]);
+            $name = uniqid() . '.' . $fileInfo["extension"];
             
 
             // don't overwrite an exis$pictureting file

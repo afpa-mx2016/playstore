@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2016 at 09:14 AM
+-- Generation Time: Nov 07, 2016 at 10:04 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -34,6 +34,14 @@ CREATE TABLE `playlist` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `playlist`
+--
+
+INSERT INTO `playlist` (`id`, `name`, `description`, `picture`, `user_id`) VALUES
+(1, 'metal', 'truc qui va bien', 'metal.png', 1),
+(2, 'dark ambient', 'truc qui va bien aussi', 'dark_ambient.jpg', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +53,23 @@ CREATE TABLE `playlist_track` (
   `track_id` int(11) NOT NULL,
   `order` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `playlist_track`
+--
+
+INSERT INTO `playlist_track` (`playlist_id`, `track_id`, `order`) VALUES
+(1, 1, NULL),
+(1, 3, NULL),
+(1, 15, NULL),
+(1, 25, NULL),
+(2, 1, NULL),
+(2, 2, NULL),
+(2, 3, NULL),
+(2, 10, NULL),
+(2, 11, NULL),
+(2, 15, NULL),
+(2, 25, NULL);
 
 -- --------------------------------------------------------
 
@@ -59,6 +84,20 @@ CREATE TABLE `track` (
   `author` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `track`
+--
+
+INSERT INTO `track` (`title`, `duration`, `id`, `author`) VALUES
+('kikou des bois', 125, 1, 'Toto'),
+('ma track 2 le retour', 120, 2, 'Toto des zozos'),
+('kikou track', 125, 3, 'zozo des troupaillons888'),
+('kikou des loulous', 125, 10, 'Alouater Zozo zouiiii'),
+('zonote', 125, 11, 'kikakou'),
+('zozozo', 122, 15, 'talui'),
+('ff', 152, 22, 'dddd8888'),
+('zozoz', 125, 26, 'kikou des iles');
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +110,14 @@ CREATE TABLE `user` (
   `passwd` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `passwd`, `email`) VALUES
+(1, 'lio', '$2y$10$f.2KCpzctju2/eHHSIthTeXHysN7gYaQ3ZCFG6w2hwzur0EaIk41S', 'fake@fake.com'),
+(2, 'admin', '$2y$10$rkNXCruCMbf.hXHlrbbX5u0s4wOwOmA4Hptx.BlCYLO5O7Hu4YdNq', 'fake@fake.com');
 
 --
 -- Indexes for dumped tables
@@ -119,7 +166,7 @@ ALTER TABLE `track`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

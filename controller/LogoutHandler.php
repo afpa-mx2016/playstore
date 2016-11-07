@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 
 include(dirname(__FILE__).'/Controller.class.php');
@@ -19,7 +19,7 @@ class LogoutHandler extends Controller{
     //put your code here
     public function run() {
         session_destroy();
-         header("Location: /");
+        header("Location: /");
     }
 
 }

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 
@@ -20,7 +20,7 @@ class LoginForm extends Controller{
     public function run() {
         
         
-        $view = new \PlayList\View\View('LoginFormView'); 
+        $view = new \PlayStore\View\View('LoginFormView'); 
         //$view->setContent(new Track());
         $view->render(NULL); 
         

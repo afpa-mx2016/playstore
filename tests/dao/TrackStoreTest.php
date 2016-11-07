@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Dao;
+namespace PlayStore\Dao;
 require(dirname(__FILE__).'/../../config.inc.php');
 require(dirname(__FILE__).'/../../dao/TrackStore.php');
 
@@ -31,7 +31,7 @@ class TrackStoreTest extends \PHPUnit_Framework_TestCase {
     }
 
     private function buildFakeObject(){
-        $track = new \PlayList\Model\Track();
+        $track = new \PlayStore\Model\Track();
         $track->setTitle('kikou track');
         $track->setAuthor('zozo des troupaillons');
         $track->setDuration(125);

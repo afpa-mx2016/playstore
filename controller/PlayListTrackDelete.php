@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 //include(dirname(__FILE__).'/Controller.class.php');
 require_once(dirname(__FILE__).'/../dao/PlayListStore.php');
@@ -18,7 +18,7 @@ class PlayListTrackDelete extends Controller {
         if ($playListId && $trackId){
             
             try{
-                $ok = \PlayList\Dao\PlayListStore::delete($playListId, $trackId, $this->getCurrentUserId());
+                $ok = \PlayStore\Dao\PlayListStore::delete($playListId, $trackId, $this->getCurrentUserId());
                 if (!$ok){
                     $this->errors = 'something went wrong with deleting playlist track';
                 }else{

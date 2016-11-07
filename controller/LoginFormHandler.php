@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 include(dirname(__FILE__).'/../dao/UserStore.php');
@@ -30,7 +30,7 @@ class LoginFormHandler extends Controller{
         if ($username && $passwd){
             
             
-            $user = \PlayList\Dao\UserStore::getUser($username);
+            $user = \PlayStore\Dao\UserStore::getUser($username);
             if (!$user){
                 $this->errors= "wrong password or username";
             }else{
@@ -66,7 +66,7 @@ class LoginFormHandler extends Controller{
         
         if ($this->hasErrors()){
             //rebuild the form
-            $view = new \PlayList\View\View('LoginFormView'); 
+            $view = new \PlayStore\View\View('LoginFormView'); 
             //$view->setContent(new Track());
             $view->render(array("errors"=> $this->errors)); 
         }

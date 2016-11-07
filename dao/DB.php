@@ -2,7 +2,7 @@
 
 
 //namespace Video\dao;
-namespace PlayList\Dao;
+namespace PlayStore\Dao;
 
 use \PDO as PDO;
 

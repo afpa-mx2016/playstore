@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 
 include(dirname(__FILE__).'/IController.php');
@@ -11,7 +11,7 @@ include(dirname(__FILE__).'/IController.php');
  *
  * @author lionel
  */
-abstract class Controller implements \PlayList\Controller\IController {
+abstract class Controller implements IController {
     
     
     protected $errors="";

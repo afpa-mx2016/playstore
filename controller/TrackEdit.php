@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 
 
@@ -18,14 +18,14 @@ class TrackEdit extends Controller {
         if ($id){
 
             //fetch track
-            $track = \PlayList\Dao\TrackStore::getTrackById($id);
+            $track = \PlayStore\Dao\TrackStore::getTrackById($id);
 
             if (!$track){
                 $this->errors = 'something went wrong with edit with id:' + $id;
             }else{
 
                 //render view
-                $view = new \PlayList\View\View('TrackFormView'); 
+                $view = new \PlayStore\View\View('TrackFormView'); 
 
                 $view->render(array('object'=> $track));
 

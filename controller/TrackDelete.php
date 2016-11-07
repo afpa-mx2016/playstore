@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 include(dirname(__FILE__).'/../dao/TrackStore.php');
@@ -14,7 +14,7 @@ class TrackDelete extends Controller {
         
         if ($id){
 
-            $ok = \PlayList\Dao\TrackStore::delete($id);
+            $ok = \PlayStore\Dao\TrackStore::delete($id);
             if (!$ok){
                 $this->errors = 'something went wrong with deleting id:'. $id . ' exist ?';
             }else{

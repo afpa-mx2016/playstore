@@ -6,9 +6,9 @@
  * and open the template in the editor.
  */
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
-use \PlayList\Model\Track as Track;
+use \PlayStore\Model\Track as Track;
 
 
 include(dirname(__FILE__).'/Controller.class.php');
@@ -20,7 +20,7 @@ class PlayListNew extends Controller {
     
     public function run(){
         
-        $view = new \PlayList\View\View('PlayListFormView'); 
+        $view = new \PlayStore\View\View('PlayListFormView'); 
         $view->render(NULL); //we pass a fake object 
     }
 }

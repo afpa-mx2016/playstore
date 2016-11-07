@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList;
+namespace PlayStore;
 
 include('config.inc.php');
 //load view class definition file
@@ -43,7 +43,7 @@ if (!in_array($ctrl, DMZ) && !isset($_SESSION['user_id'])){
 include('controller/'.$ctrl.'.php');
 
 
-$ctrlClassName = "PlayList\\Controller\\".$ctrl;
+$ctrlClassName = "PlayStore\\Controller\\".$ctrl;
 $controller = new $ctrlClassName();
 
 //inject current_ user id 
@@ -56,11 +56,11 @@ if (isset($_SESSION['user_id'])) {
 //load output from controllers into memory
 ob_start();
 
-    $controller->run();
+$controller->run();
 
-    $content = ob_get_contents();
+$content = ob_get_clean();
 
-ob_end_clean();
+//
 
 if ($direct_rendering){ //don't render with template
     echo $content;

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 /**
  * Description of Controller

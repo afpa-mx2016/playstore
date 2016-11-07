@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 
@@ -18,18 +18,18 @@ class TrackList extends Controller {
         //fetch all tracks
         $searchStr = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
         if ($searchStr){
-            $tracks = \PlayList\Dao\TrackStore::getTracksByTitle($searchStr);
+            $tracks = \PlayStore\Dao\TrackStore::getTracksByTitle($searchStr);
         }else{
-             $tracks = \PlayList\Dao\TrackStore::getTracks();
+             $tracks = \PlayStore\Dao\TrackStore::getTracks();
         }
         
-        $playlists = \PlayList\Dao\PlayListStore::getPlayLists($this->current_userid);
+        $playlists = \PlayStore\Dao\PlayListStore::getPlayLists($this->current_userid);
         
         
        
         //var_dump($tracks);
         //render view
-        $view = new \PlayList\View\View('TrackListView');
+        $view = new \PlayStore\View\View('TrackListView');
         $view->render(array(
             "object"=>$tracks,
             "search"=> $searchStr,

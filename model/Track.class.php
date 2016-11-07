@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Model;
+namespace PlayStore\Model;
 /**
  * Description of newPHPClass
  *

@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 include(dirname(__FILE__).'/../dao/TrackStore.php');
@@ -16,7 +16,7 @@ class TrackFormHandler extends Controller {
         $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
         
         //form validation
-        $track = new \PlayList\Model\Track();
+        $track = new \PlayStore\Model\Track();
         if ($title) {
             $track->setTitle($title);
         }else{
@@ -42,9 +42,9 @@ class TrackFormHandler extends Controller {
             
             if ($id){ //edit mode
                 $track->setId($id);
-                $ok = \PlayList\Dao\TrackStore::update($track);
+                $ok = \PlayStore\Dao\TrackStore::update($track);
             }else{ //create mode
-                $ok = \PlayList\Dao\TrackStore::save($track);
+                $ok = \PlayStore\Dao\TrackStore::save($track);
             }
             
             
@@ -59,7 +59,7 @@ class TrackFormHandler extends Controller {
 
         if($this->hasErrors()){
              //replay form when error occurs
-             $view = new \PlayList\View\View('TrackFormView'); 
+             $view = new \PlayStore\View\View('TrackFormView'); 
              $view->render(
                 array('object'=> $track,
                        'errors'=> $this->errors));

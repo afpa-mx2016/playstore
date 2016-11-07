@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 include(dirname(__FILE__).'/../dao/PlayListStore.php');
@@ -22,7 +22,7 @@ class PlayListFormHandler extends Controller{
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         
-        $playList = new \PlayList\Model\PlayList();
+        $playList = new \PlayStore\Model\PlayList();
         $playList->setUser_id($this->getCurrentUserId());
         if (!$name){
             $this->errors .= "name is required\n";
@@ -76,7 +76,7 @@ class PlayListFormHandler extends Controller{
         if (!$this->hasErrors()){
             
             
-            $ok = \PlayList\Dao\PlayListStore::save($playList);
+            $ok = \PlayStore\Dao\PlayListStore::save($playList);
             
             
             if(!$ok){
@@ -87,7 +87,7 @@ class PlayListFormHandler extends Controller{
         
         if($this->hasErrors()){
              //replay form when error occurs
-             $view = new \PlayList\View\View('PlayListFormView'); 
+             $view = new \PlayStore\View\View('PlayListFormView'); 
              $view->render(
                 array('object'=> $playList,
                        'errors'=> $this->errors));

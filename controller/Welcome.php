@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace PlayList\Controller;
+namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
 
@@ -17,7 +17,7 @@ class Welcome extends Controller {
     
     public function run(){
         
-        $view = new \PlayList\View\View('WelcomeView'); 
+        $view = new \PlayStore\View\View('WelcomeView'); 
         $view->render(NULL); //
     }
 }

@@ -9,9 +9,11 @@ include('view/View.php');
 //default controller
 $ctrl = 'Welcome';
 
+//action = controller name.  could be send with either GET or POST
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 if (!$action) $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 
+//direct_rendering=true means don't output main template, only conntent from controller
 $direct_rendering = filter_input(INPUT_GET, 'direct_rendering', FILTER_VALIDATE_BOOLEAN);
 if (!$direct_rendering) $direct_rendering = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 

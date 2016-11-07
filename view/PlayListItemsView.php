@@ -1,5 +1,5 @@
 <?php        
-        $playList = $data['content'];
+        $playList = $data['object'];
         echo '<h1>'.$playList->getName().'</h1>';
 ?>
 

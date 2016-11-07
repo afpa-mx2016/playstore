@@ -61,7 +61,7 @@ class TrackFormHandler extends Controller {
              //replay form when error occurs
              $view = new \PlayList\View\View('TrackFormView'); 
              $view->render(
-                array('content'=> $track,
+                array('object'=> $track,
                        'errors'=> $this->errors));
         }else{
             header("Location: /index.php?action=TrackList",true,303);

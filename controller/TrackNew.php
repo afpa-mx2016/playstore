@@ -15,7 +15,7 @@ class TrackNew extends Controller {
     public function run(){
         
         $view = new \PlayList\View\View('TrackFormView'); 
-        $view->render(array('content'=> new Track())); //we pass a fake object 
+        $view->render(array('object'=> new Track())); //we pass a fake object 
     }
 }
 

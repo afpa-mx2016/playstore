@@ -29,7 +29,7 @@
         <?php
 
 
-        foreach ($data['content'] as $track) {
+        foreach ($data['object'] as $track) {
             
             $adminContent = "";
             if ($data['isadmin']){

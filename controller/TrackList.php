@@ -31,7 +31,7 @@ class TrackList extends Controller {
         //render view
         $view = new \PlayList\View\View('TrackListView');
         $view->render(array(
-            "content"=>$tracks,
+            "object"=>$tracks,
             "search"=> $searchStr,
             "playlists"=> $playlists,
             "isadmin" => $this->isAdmin()));

@@ -33,7 +33,7 @@ class PlayList extends Controller{
         //var_dump($tracks);
         //render view
 
-        $view->render(array("content"=>$playlists));
+        $view->render(array("object"=>$playlists));
         
         
     }

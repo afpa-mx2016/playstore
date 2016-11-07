@@ -25,7 +25,7 @@ class PlayListTrackList extends Controller {
 
         //render view
         $view = new \PlayList\View\View('PlayListItemsView');
-        $view->render(array("content"=>$playList));
+        $view->render(array("object"=>$playList));
     }
     
     

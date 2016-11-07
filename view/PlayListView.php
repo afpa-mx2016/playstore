@@ -3,7 +3,7 @@
 
         echo ' <div class="row">';
 
-        foreach ($data['content'] as $playlist) {
+        foreach ($data['object'] as $playlist) {
 
             echo '<a href="index.php?action=PlayListTrackList&playlist_id='.$playlist->getId().'">
                     <div class="col-sm-6 col-md-3">

@@ -43,6 +43,11 @@ class LoginFormHandler extends Controller{
                 }else{
                     $_SESSION['user_id'] = $user->getId();
                     $_SESSION['current_user'] = $user->getUsername();
+                    //fake admin role
+                    $_SESSION['isadmin'] = false;
+                    if ($user->getUsername()=='admin'){
+                        $_SESSION['isadmin'] = true;
+                    }
 
                     header("Location: /index.php?action=PlayList",true,303);
                     

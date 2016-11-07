@@ -30,7 +30,11 @@ class TrackList extends Controller {
         //var_dump($tracks);
         //render view
         $view = new \PlayList\View\View('TrackListView');
-        $view->render(array("content"=>$tracks, "search"=> $searchStr, "playlists"=> $playlists));
+        $view->render(array(
+            "content"=>$tracks,
+            "search"=> $searchStr,
+            "playlists"=> $playlists,
+            "isadmin" => $this->isAdmin()));
     }
     
     

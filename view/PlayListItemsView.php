@@ -1,7 +1,7 @@
 <?php        
         $playList = $data['content'];
-            echo '<h1>'.$playList->getName().'</h1>';
-        ?>
+        echo '<h1>'.$playList->getName().'</h1>';
+?>
 
         <table class="table table-hover">
             <thead>

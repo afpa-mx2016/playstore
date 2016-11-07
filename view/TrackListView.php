@@ -30,12 +30,17 @@
 
 
         foreach ($data['content'] as $track) {
+            
+            $adminContent = "";
+            if ($data['isadmin']){
+                  $adminContent= '<a href="index.php?action=TrackEdit&id='.$track->getId().'" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>'
+                        . '<a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-remove">&nbsp;</span></a>';
+            }
 
             echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td>'
-                    . '</td><td>'.$track->getDuration().'</td>'
-                    . '<td><a href="index.php?action=TrackEdit&id='.$track->getId().'" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>'
-                        . '<a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-remove">&nbsp;</span></a>'
-                        . '<a href="#modal-playlist" data-toggle="modal" class="add-to-playlist" data-id="'.$track->getId().'" title="add to playlist"><span class="glyphicon glyphicon-plus">&nbsp;</span></a>'
+                    . '</td><td>'.$track->getDuration().'</td><td>';
+            echo $adminContent;
+            echo '<a href="#modal-playlist" data-toggle="modal" class="add-to-playlist" data-id="'.$track->getId().'" title="add to playlist"><span class="glyphicon glyphicon-plus">&nbsp;</span></a>'
                     . '</td></tr>';
         }
         ?>
@@ -74,7 +79,7 @@
 
             </div>
           </div>
-          <script type="text/javascript" src="assets/js/app.js"></script> 
+         
 
 
         

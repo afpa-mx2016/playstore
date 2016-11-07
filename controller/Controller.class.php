@@ -17,6 +17,7 @@ abstract class Controller implements \PlayList\Controller\IController {
     protected $errors="";
     protected $current_userid;
     protected $current_username;
+    protected $isAdmin;
       
    
     public function hasErrors(){
@@ -34,6 +35,15 @@ abstract class Controller implements \PlayList\Controller\IController {
        return $this->current_userid;
     }
     
+    function isAdmin() {
+        return $this->isAdmin;
+    }
+
+    function setIsAdmin($isAdmin) {
+        $this->isAdmin = $isAdmin;
+    }
+
+        
     function getCurrentUsername() {
         return $this->current_username;
     }

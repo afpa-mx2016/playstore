@@ -3,6 +3,7 @@
 namespace PlayList;
 
 include('config.inc.php');
+//load view class definition file
 include('view/View.php');
 
 //default controller
@@ -40,8 +41,6 @@ if (!in_array($ctrl, DMZ) && !isset($_SESSION['user_id'])){
 include('controller/'.$ctrl.'.php');
 
 
-
-
 $ctrlClassName = "PlayList\\Controller\\".$ctrl;
 $controller = new $ctrlClassName();
 
@@ -49,6 +48,7 @@ $controller = new $ctrlClassName();
 if (isset($_SESSION['user_id'])) {
     $controller->setCurrentUserId($_SESSION['user_id']);
     $controller->setCurrentUserName($_SESSION['current_user']);
+    $controller->setIsAdmin($_SESSION['isadmin']);
 }
 
 //load output from controllers into memory
@@ -63,9 +63,11 @@ ob_end_clean();
 if ($direct_rendering){ //don't render with template
     echo $content;
 }else{
-    $data = array("errors"=>$controller->getErrors(),
+    $data = array(
+        "errors"=>$controller->getErrors(),
 	"content"=>$content, 
-        "current_user" => $controller->getCurrentUserName()
+        "current_user" => $controller->getCurrentUserName(),
+        "isadmin" => $controller->isAdmin()
         );
     //load view
     $tpl = new View\View('MainTemplate');

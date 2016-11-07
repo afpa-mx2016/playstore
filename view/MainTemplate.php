@@ -64,7 +64,7 @@
                 return objURL;
             };
 
-
+        //code for making current selected menu active
         var params = parseQueryString();
         var currentAction = params['action'];
         if (currentAction!==undefined){
@@ -79,8 +79,9 @@
         }
             
         </script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/1.1.0/bootstrap-native.min.js"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/1.1.0/bootstrap-native.min.js"></script>
+ <script type="text/javascript" src="assets/js/app.js"></script> 
         </body>
 </html>
     

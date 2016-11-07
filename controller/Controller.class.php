@@ -27,6 +27,10 @@ abstract class Controller implements \PlayList\Controller\IController {
         return $this->errors;
     }
     
+    public function setErrors($errors){
+        $this->errors = $errors;
+    }
+    
     public function setCurrentUserId($userid){
         $this->current_userid = $userid;
     }

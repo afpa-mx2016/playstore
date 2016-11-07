@@ -7,3 +7,6 @@ go to project's directory:
  - modify if needed `config.inc.php`
 
  - execute from command line: `php -S 127.0.0.1:8000`
+
+- log in as admin : admin/admin
+- log in as user: lio/lio

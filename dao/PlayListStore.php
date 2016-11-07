@@ -47,6 +47,39 @@ class PlayListStore {
         }
         
     }
+    /**
+     * check if playList belong to user
+     * @param type $playListId
+     * @param type $userId
+     * @return boolean true if playListId belongs to userId
+     */
+    static function exist($playListId, $userId){
+        
+        $pdo = DB::getConnection();
+        
+        $stmt = $pdo->prepare("SELECT count(*) FROM playlist WHERE id = :playlist_id AND user_id = :user_id");
+        $stmt->bindValue(':playlist_id', $playListId);
+        $stmt->bindValue(':user_id', $userId);
+        $stmt->execute();
+	$res = $stmt->fetchColumn();
+        return ($res>0);
+    }
+    
+    static function delete($playListId, $trackId, $userId){
+        
+        if (self::exist($playListId,$userId )){
+        
+            $pdo = DB::getConnection();
+
+            $stmt = $pdo->prepare('DELETE FROM playlist_track WHERE playlist_id = :playlist_id AND track_id = :track_id');
+            $stmt->bindValue(':playlist_id', $playListId);
+            $stmt->bindValue(':track_id', $trackId);
+
+            return $stmt->execute();
+        }else{
+            throw new \Exception("playlist id ". $playListId."is not owned by user id:" . $userId);
+        }
+    }
     
     static function  getPlayLists($userid){
        // connection BDD

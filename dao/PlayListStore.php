@@ -25,7 +25,28 @@ use \PDO as PDO;
  */
 class PlayListStore {
    
-
+       /**
+    *
+    *@return last inserted id or -1 if any problem
+    **/
+    static function save(PlayList $playList){
+        $pdo = DB::getConnection();
+        
+        $stmt = $pdo->prepare('
+            INSERT INTO playlist ( name, description, user_id, picture)
+                VALUES (:name, :description, :user_id, :picture)');
+        $stmt->bindValue(':name', $playList->getName(), PDO::PARAM_STR);
+        $stmt->bindValue(':description', $playList->getDescription(), PDO::PARAM_STR);
+        $stmt->bindValue(':user_id', $playList->getUser_id(), PDO::PARAM_INT);
+        $stmt->bindValue(':picture', $playList->getPicture(), PDO::PARAM_STR);
+        $res = $stmt->execute();
+        if ($res){
+            return $pdo->lastInsertId();
+        }else {
+            return -1;
+        }
+        
+    }
     
     static function  getPlayLists($userid){
        // connection BDD

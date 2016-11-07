@@ -22,11 +22,21 @@ class PlayList {
     private $description;
     private $picture;
     private $tracks;
+    private $user_id;
     
     function getId() {
         return $this->id;
     }
     
+    function getUser_id() {
+        return $this->user_id;
+    }
+
+    function setUser_id($user_id) {
+        $this->user_id = $user_id;
+    }
+
+        
     function getPicture() {
         return $this->picture;
     }

@@ -34,7 +34,7 @@
             $adminContent = "";
             if ($data['isadmin']){
                   $adminContent= '<a href="index.php?action=TrackEdit&id='.$track->getId().'" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>'
-                        . '<a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-remove">&nbsp;</span></a>';
+                        . '<a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-trash">&nbsp;</span></a>';
             }
 
             echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td>'

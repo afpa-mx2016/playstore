@@ -1,7 +1,9 @@
+<div class="row">
+<a type="button" class="btn btn-success pull-right" href="index.php?action=PlayListNew">Ajouter une playlist</a>
+
 <?php
 
 
-        echo ' <div class="row">';
 
         foreach ($data['object'] as $playlist) {
 
@@ -17,8 +19,9 @@
                       </div>
                  </div></a>';
         }
-        
-        echo '</div>';
+?>
+
+</div>
             
  
 

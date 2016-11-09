@@ -12,7 +12,7 @@ require(dirname(__FILE__).'/../model/Track.class.php');
 
 class TrackNew extends Controller {
     
-    public function run(){
+    public function run($params){
         
         $view = new \PlayStore\View\View('TrackFormView'); 
         $view->render(array('object'=> new Track())); //we pass a fake object 

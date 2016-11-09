@@ -17,7 +17,7 @@ include(dirname(__FILE__).'/Controller.class.php');
  */
 class LoginForm extends Controller{
     //put your code here
-    public function run() {
+    public function run($params) {
         
         
         $view = new \PlayStore\View\View('LoginFormView'); 

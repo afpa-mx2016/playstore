@@ -9,12 +9,12 @@ require_once(dirname(__FILE__).'/../dao/PlayListStore.php');
 class PlayListTrackList extends Controller {
     
     
-    public function run(){
+    public function run($params){
         
         
         
-
-        $playlist_id = filter_input(INPUT_GET, 'playlist_id', FILTER_VALIDATE_INT);
+        $playlist_id = $params['id'];
+        //$playlist_id = filter_input(INPUT_GET, 'playlist_id', FILTER_VALIDATE_INT);
         
         //ensure that user can only see its own playlist
         $ok = \PlayStore\Dao\PlayListStore::exist($playlist_id, $this->getCurrentUserId());

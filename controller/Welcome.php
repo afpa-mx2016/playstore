@@ -15,7 +15,7 @@ include(dirname(__FILE__).'/Controller.class.php');
 
 class Welcome extends Controller {
     
-    public function run(){
+    public function run($params){
         
         $view = new \PlayStore\View\View('WelcomeView'); 
         $view->render(NULL); //

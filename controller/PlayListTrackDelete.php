@@ -9,11 +9,12 @@ include(dirname(__FILE__).'/PlayListTrackList.php');
 class PlayListTrackDelete extends Controller {
 
     
-    public function run(){
+    public function run($params){
    
-        $playListId = filter_input(INPUT_GET, 'playlist_id', FILTER_VALIDATE_INT);
-        $trackId = filter_input(INPUT_GET, 'track_id', FILTER_VALIDATE_INT);
- 
+        //$playListId = filter_input(INPUT_GET, 'playlist_id', FILTER_VALIDATE_INT);
+        //$trackId = filter_input(INPUT_GET, 'track_id', FILTER_VALIDATE_INT);
+        $playListId = $params['playlist_id'];
+        $trackId = $params['track_id'];
         
         if ($playListId && $trackId){
             
@@ -22,7 +23,7 @@ class PlayListTrackDelete extends Controller {
                 if (!$ok){
                     $this->errors = 'something went wrong with deleting playlist track';
                 }else{
-                      header("Location: /index.php?action=PlayListTrackList&playlist_id=".$playListId,true,303);
+                      header("Location: /playlist/".$playListId."/tracks",true,303);
                 }
                 
                 
@@ -37,10 +38,10 @@ class PlayListTrackDelete extends Controller {
         
         
         if ($this->hasErrors()){
-            $_GET['playlist_id'] = $playListId;
+            $params['id']= $playListId;
             $ctrl = new PlayListTrackList();
             $ctrl->setErrors($this->errors);
-            $ctrl->run();
+            $ctrl->run($params);
             
         }
     }

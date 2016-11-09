@@ -1,5 +1,5 @@
         <div class="form-container">
-           <form method="post" action="index.php?action=LoginFormHandler">
+           <form method="post" action="/login">
                <h2>Sign in.</h2><hr />
                <?php
                if (isset($data['errors'])){

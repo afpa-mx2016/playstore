@@ -21,7 +21,7 @@ include(dirname(__FILE__).'/../dao/UserStore.php');
 class LoginFormHandler extends Controller{  
     
 
-    public function run() {
+    public function run($params) {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $passwd = filter_input(INPUT_POST, 'passwd', FILTER_SANITIZE_STRING);
         
@@ -48,8 +48,8 @@ class LoginFormHandler extends Controller{
                     if ($user->getUsername()=='admin'){
                         $_SESSION['isadmin'] = true;
                     }
-
-                    header("Location: /index.php?action=PlayList",true,303);
+                      //TODO redirect where user's clicked
+                    header("Location: /playList",true,303);
                     
                 }
                 

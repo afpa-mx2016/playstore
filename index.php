@@ -2,39 +2,58 @@
 
 namespace PlayStore;
 
+
 include('config.inc.php');
+include('lib/AltoRouter.php');
 //load view class definition file
 include('view/View.php');
 
-//default controller
-$ctrl = 'Welcome';
+$router = new \AltoRouter();
 
-//action = controller name.  could be send with either GET or POST
-$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-if (!$action) $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
+// routes
+$router->map('GET', '/', 'Welcome');
+$router->map('GET', '/login', 'LoginForm');
+$router->map('POST', '/login', 'LoginFormHandler');
+$router->map('GET', '/logout', 'LogoutHandler');
+
+
+$router->map('GET', '/playlist', 'PlayList');
+$router->map('GET', '/playlist/_new', 'PlayListNew');
+$router->map('GET', '/playlist/[i:id]/tracks', 'PlayListTrackList');
+$router->map('GET', '/playlist/[i:playlist_id]/tracks/[i:track_id]/_delete', 'PlayListTrackDelete');
+$router->map('PUT', '/playlist/[i:playlist_id]/tracks/[i:track_id]', 'TrackToPlayList');
+$router->map('POST', '/playlist', 'PlayListFormHandler');
+
+$router->map('GET', '/tracks', 'TrackList');
+$router->map('GET', '/tracks/_new', 'TrackNew');
+$router->map('GET', '/tracks/[i:id]/_edit', 'TrackEdit');
+$router->map('GET', '/tracks/[i:id]/_delete', 'TrackDelete'); //too complicated to handle a DELETE http request , use GET instead
+$router->map('PUT', '/tracks/[i:id]', 'TrackFormHandler');
+$router->map('POST', '/tracks', 'TrackFormHandler');
+
+//match current request url
+$match = $router->match();
+//var_dump($match);
+
+if(!($match && (file_exists('controller/'.$match['target'].'.php')))) {
+	
+    // no route was matched
+    //http_response_code(404);
+    return false;
+
+} 
+$ctrl = $match['target'];
 
 //direct_rendering=true means don't output main template, only conntent from controller
 $direct_rendering = filter_input(INPUT_GET, 'direct_rendering', FILTER_VALIDATE_BOOLEAN);
 if (!$direct_rendering) $direct_rendering = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 
-if ($action){
-    
-    if (file_exists('controller/'.$action.'.php')){
-        $ctrl = $action;
-    }else{
-        http_response_code(404);
-        return;
-    }
-    
-    
-}
-
-
 ////if accessing protected pages without being logged, redirect to LoginForm
 session_start();
-if (!in_array($ctrl, DMZ) && !isset($_SESSION['user_id'])){
+if (!in_array($match['target'], DMZ) && !isset($_SESSION['user_id'])){
     //redirect to login
-    header("Location: /index.php?action=LoginForm");
+    $ctrl = 'LoginForm';
+    //header("Location: /Login");
 }
 
 
@@ -56,7 +75,7 @@ if (isset($_SESSION['user_id'])) {
 //load output from controllers into memory
 ob_start();
 
-$controller->run();
+$controller->run($match['params']);
 
 $content = ob_get_clean();
 

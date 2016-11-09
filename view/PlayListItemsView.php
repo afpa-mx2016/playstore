@@ -28,7 +28,7 @@
 
             echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td>'
                     . '</td><td>'.$track->getDuration().'</td>'
-                    . '<td><a href="index.php?action=PlayListTrackDelete&playlist_id='.$playList->getId().'&track_id='.$track->getId().'" title="delete track from playlist"><span class="glyphicon glyphicon-remove">&nbsp;</span></a>'
+                    . '<td><a href="/playlist/'.$playList->getId().'/tracks/'.$track->getId().'/_delete" title="delete track from playlist"><span class="glyphicon glyphicon-remove">&nbsp;</span></a>'
                     . '</td></tr>';
         }
 

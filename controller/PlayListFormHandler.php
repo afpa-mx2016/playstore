@@ -17,7 +17,7 @@ include(dirname(__FILE__).'/../dao/PlayListStore.php');
  */
 class PlayListFormHandler extends Controller{
     //put your code here
-    public function run() {
+    public function run($params) {
         
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
@@ -92,7 +92,7 @@ class PlayListFormHandler extends Controller{
                 array('object'=> $playList,
                        'errors'=> $this->errors));
         }else{
-            header("Location: /index.php?action=PlayList",true,303);
+            header("Location: /playlist",true,303);
         }
 
     }

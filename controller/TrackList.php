@@ -12,11 +12,14 @@ include(dirname(__FILE__).'/../dao/PlayListStore.php');
 class TrackList extends Controller {
     
     
-    public function run(){
+    public function run($params){
         
         
         //fetch all tracks
         $searchStr = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
+        
+        
+        
         if ($searchStr){
             $tracks = \PlayStore\Dao\TrackStore::getTracksByTitle($searchStr);
         }else{

@@ -5,20 +5,20 @@
         <meta charset="UTF-8">
         <title>PlayStore</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/app.css">
+        <link rel="stylesheet" href="/assets/css/app.css">
     </head>
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                   PlayStore
                 </a>
               </div>
               <ul class="nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
-                <li><a data-action="PlayList" href="index.php?action=PlayList">My PlayList</a></li>
-                <li><a data-action="Track" href="index.php?action=TrackList">TrackList</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a data-action="PlayList" href="/playlist">My PlayList</a></li>
+                <li><a data-action="Track" href="/tracks">TrackList</a></li>
               </ul>
               <div class="nav navbar-nav navbar-right">
                 <?php 
@@ -26,12 +26,12 @@
                         echo '
                         
                            <a class="navbar-brand"><em>Welcome '.$data["current_user"].'</em></a>
-                           <a href="index.php?action=LogoutHandler" class="navbar-brand"><strong>Logout</strong></a>
+                           <a href="/logout" class="navbar-brand"><strong>Logout</strong></a>
                         ';
                     }else{
                         echo '<ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="index.php?action=LoginForm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                           </ul>';
                     }
                  ?>
@@ -81,7 +81,7 @@
         </script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/1.1.0/bootstrap-native.min.js"></script>
- <script type="text/javascript" src="assets/js/app.js"></script> 
+ <script type="text/javascript" src="/assets/js/app.js"></script> 
         </body>
 </html>
     

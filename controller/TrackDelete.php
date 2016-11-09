@@ -8,10 +8,10 @@ include(dirname(__FILE__).'/../dao/TrackStore.php');
 class TrackDelete extends Controller {
 
     
-    public function run(){
+    public function run($params){
    
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-        
+        //$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $id = $params['id'];
         if ($id){
 
             $ok = \PlayStore\Dao\TrackStore::delete($id);
@@ -19,7 +19,7 @@ class TrackDelete extends Controller {
                 $this->errors = 'something went wrong with deleting id:'. $id . ' exist ?';
             }else{
 
-                  header("Location: /index.php?action=TrackList",true,303);
+                  header("Location: /tracks",true,303);
             }
 
 

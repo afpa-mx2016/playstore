@@ -1,14 +1,26 @@
+<?php
 
-         <form action="index.php" method="get">
+    function generateDeleteForm($trackId){
+        ?>
+        <form action="/tracks/<?php echo $trackId; ?>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit" class="btn btn-small">
+                <i class="glyphicon glyphicon-trash"></i>
+            </button>
+        </form>
+        <?php
+    }
+    ?>
+
+         <form action="/tracks" method="get">
             <div class="input-group col-md-12">
-                <input type="hidden" name="action" value="TrackList"/>
                 <input type="text" name="search" class="form-control" placeholder="rechercher" value="<?php echo $data['search']; ?>"/>
                 <span class="input-group-btn">
                     <button class="btn btn-secondary" type="submit">
                         <i class="glyphicon glyphicon-search"></i>
                     </button>
                 </span>
-                <a type="button" class="btn btn-success pull-right" href="index.php?action=TrackNew">Ajouter un titre</a>
+                <a type="button" class="btn btn-success pull-right" href="/tracks/new">Ajouter un titre</a>
             </div>
          </form>
          
@@ -33,8 +45,8 @@
             
             $adminContent = "";
             if ($data['isadmin']){
-                  $adminContent= '<a href="index.php?action=TrackEdit&id='.$track->getId().'" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>'
-                        . '<a href="index.php?action=TrackDelete&id='.$track->getId().'" title="delete track"><span class="glyphicon glyphicon-trash">&nbsp;</span></a>';
+                  $adminContent= '<a href="/tracks/'.$track->getId().'/_edit" title="edit track"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>'
+                        . '<a href="tracks/'.$track->getId().'/_delete" title="delete track"><span class="glyphicon glyphicon-trash">&nbsp;</span></a>';
             }
 
             echo '<tr><td>'.$track->getTitle().'</td><td>'.$track->getAuthor().'</td><td>'

@@ -14,7 +14,7 @@ namespace PlayStore\Controller;
  * @author lionel
  */
 interface IController {
-    public function run();
+    public function run($params);
     public function hasErrors();
     public function getErrors();
     

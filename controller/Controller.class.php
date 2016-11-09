@@ -57,6 +57,6 @@ abstract class Controller implements IController {
     }
 
     
-    public abstract function run();
+    public abstract function run($params);
 
 }

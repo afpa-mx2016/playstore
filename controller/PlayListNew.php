@@ -18,7 +18,7 @@ include(dirname(__FILE__).'/Controller.class.php');
 
 class PlayListNew extends Controller {
     
-    public function run(){
+    public function run($params){
         
         $view = new \PlayStore\View\View('PlayListFormView'); 
         $view->render(NULL); //we pass a fake object 

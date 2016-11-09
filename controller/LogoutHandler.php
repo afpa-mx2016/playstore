@@ -17,7 +17,7 @@ include(dirname(__FILE__).'/Controller.class.php');
  */
 class LogoutHandler extends Controller{
     //put your code here
-    public function run() {
+    public function run($params) {
         session_destroy();
         header("Location: /");
     }

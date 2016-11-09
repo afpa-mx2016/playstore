@@ -10,7 +10,7 @@
         
         ?>
         
-        <form class="" name='musicAdd' action="index.php?action=TrackFormHandler" method="post">
+        <form class="" name='musicAdd' action="/tracks" method="post">
             <input type="hidden" name="id" value="<?php echo $track->getId(); ?>"/>
 
             <div class="form-group">

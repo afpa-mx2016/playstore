@@ -11,10 +11,10 @@ include(dirname(__FILE__).'/../dao/TrackStore.php');
 
 class TrackEdit extends Controller {
     
-    public function run(){
+    public function run($params){
         
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-
+        //$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $id = $params['id'];
         if ($id){
 
             //fetch track

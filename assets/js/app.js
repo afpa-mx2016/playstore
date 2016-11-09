@@ -19,11 +19,10 @@ if (modaldiv!==null){
     var add_track_to_playlist = function(playlist_id){
         var xhr = new XMLHttpRequest();
         var formData = new FormData();
-        formData.append("action", "TrackToPlayList");
         formData.append("direct_rendering", "true");
         formData.append("track_id", current_selected_track_id);
         formData.append("playlist_id", playlist_id);
-        xhr.open("POST", "index.php", true);
+        xhr.open("PUT", "/playlist/" + playlist_id + "/tracks/" +current_selected_track_id, true);
         xhr.onload = function (e) {
             if (xhr.readyState === 4) {
               if (xhr.status === 201) {
@@ -44,6 +43,8 @@ if (modaldiv!==null){
         };
         xhr.send(formData);
     }
+    
+    
 
     var click_btn_add_event = function(e){
         current_selected_track_id = this.getAttribute('data-id');

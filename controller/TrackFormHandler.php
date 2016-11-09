@@ -8,7 +8,7 @@ include(dirname(__FILE__).'/../dao/TrackStore.php');
 
 class TrackFormHandler extends Controller {
 
-    public function run(){
+    public function run($params){
 
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
         $author = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_STRING);
@@ -64,7 +64,7 @@ class TrackFormHandler extends Controller {
                 array('object'=> $track,
                        'errors'=> $this->errors));
         }else{
-            header("Location: /index.php?action=TrackList",true,303);
+            header("Location: /tracks",true,303);
         }
 
 

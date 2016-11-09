@@ -18,11 +18,12 @@ include(dirname(__FILE__).'/../dao/PlayListStore.php');
  */
 class TrackToPlayList extends Controller{
     //put your code here
-    public function run() {
+    public function run($params) {
         
-        $playlist_id = filter_input(INPUT_POST, 'playlist_id', FILTER_VALIDATE_INT);
-        $track_id = filter_input(INPUT_POST, 'track_id', FILTER_VALIDATE_INT);
-        
+        //$playlist_id = filter_input(INPUT_POST, 'playlist_id', FILTER_VALIDATE_INT);
+        //$track_id = filter_input(INPUT_POST, 'track_id', FILTER_VALIDATE_INT);
+        $playlist_id= $params['playlist_id'];
+        $track_id = $params['track_id'];
         
         if ($playlist_id && $track_id){
             

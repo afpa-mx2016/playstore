@@ -19,7 +19,7 @@ include(dirname(__FILE__).'/../dao/PlayListStore.php');
  */
 class PlayList extends Controller{
     //put your code here
-    public function run() {
+    public function run($params) {
         
         $view = new \PlayStore\View\View('PlayListView');
 

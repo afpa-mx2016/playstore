@@ -1,5 +1,5 @@
         <h1>Nouvelle PlayList:</h1>
-        <form name='playlistAdd' enctype="multipart/form-data" action="index.php?action=PlayListFormHandler" method="post">
+        <form name='playlistAdd' enctype="multipart/form-data" action="/playlist" method="post">
 
             <div class="form-group">
                 <label class="control-label" for="name">Nom :</label>

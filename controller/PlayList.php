@@ -28,7 +28,7 @@ class PlayList extends Controller{
 
         //render view
 
-        $view->render(array("object"=>$playlists));
+        $view->render(array("playlists"=>$playlists));
         
         
     }

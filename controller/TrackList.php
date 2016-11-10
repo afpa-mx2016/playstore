@@ -31,7 +31,7 @@ class TrackList extends Controller {
         //render view
         $view = new \PlayStore\View\View('TrackListView');
         $view->render(array(
-            "object"=>$tracks,
+            "tracks"=>$tracks,
             "search"=> $searchStr,
             "playlists"=> $playlists,
             "isadmin" => $this->isAdmin()));

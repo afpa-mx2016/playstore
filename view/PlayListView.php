@@ -5,7 +5,7 @@
 
 
 
-        foreach ($data['object'] as $playlist) {
+        foreach ($data['playlists'] as $playlist) {
 
             echo '<a href="index.php?action=PlayListTrackList&playlist_id='.$playlist->getId().'">
                     <div class="col-sm-6 col-md-3">

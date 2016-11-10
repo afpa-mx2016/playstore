@@ -1,5 +1,5 @@
 <?php        
-        $playList = $data['object'];
+        $playList = $data['playList'];
         echo '<h1>'.$playList->getName().'</h1>';
         
 

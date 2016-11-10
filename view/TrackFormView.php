@@ -1,6 +1,6 @@
 <?php
 
-        $track = $data['object'];
+        $track = $data['track'];
 
         if ($track->getId()!=null){ //edit mode
             echo '<h1>Modifier titre:</h1>';

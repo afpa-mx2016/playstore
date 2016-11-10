@@ -8,8 +8,10 @@
 
 namespace PlayStore\Controller;
 
+use \PlayStore\Model\Dao\UserStore;
+
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../dao/UserStore.php');
+include(dirname(__FILE__).'/../model/dao/UserStore.php');
 
 
 
@@ -30,9 +32,9 @@ class LoginFormHandler extends Controller{
         if ($username && $passwd){
             
             
-            $user = \PlayStore\Dao\UserStore::getUser($username);
+            $user = UserStore::getUser($username);
             if (!$user){
-                $this->errors= "wrong password or username";
+                $this->errors = "wrong password or username";
             }else{
 
                  if (!password_verify($passwd, $user->getPasswd())){

@@ -9,7 +9,7 @@
 namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../dao/PlayListStore.php');
+include(dirname(__FILE__).'/../model/dao/PlayListStore.php');
 
 /**
  * Description of TrackToPlayList
@@ -26,7 +26,7 @@ class TrackToPlayList extends Controller{
         
         if ($playlist_id && $track_id){
             
-            $ok = \PlayStore\Dao\PlayListStore::addTrack($playlist_id, $track_id);
+            $ok = \PlayStore\Model\Dao\PlayListStore::addTrack($playlist_id, $track_id);
             if ($ok){
                 http_response_code(201);
             }else{

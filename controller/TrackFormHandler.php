@@ -3,7 +3,7 @@
 namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../dao/TrackStore.php');
+include(dirname(__FILE__).'/../model/dao/TrackStore.php');
 
 
 class TrackFormHandler extends Controller {
@@ -16,7 +16,7 @@ class TrackFormHandler extends Controller {
         $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
         
         //form validation
-        $track = new \PlayStore\Model\Track();
+        $track = new \PlayStore\Model\Entities\Track();
         if ($title) {
             $track->setTitle($title);
         }else{
@@ -42,9 +42,9 @@ class TrackFormHandler extends Controller {
             
             if ($id){ //edit mode
                 $track->setId($id);
-                $ok = \PlayStore\Dao\TrackStore::update($track);
+                $ok = \PlayStore\Model\Dao\TrackStore::update($track);
             }else{ //create mode
-                $ok = \PlayStore\Dao\TrackStore::save($track);
+                $ok = \PlayStore\Model\Dao\TrackStore::save($track);
             }
             
             

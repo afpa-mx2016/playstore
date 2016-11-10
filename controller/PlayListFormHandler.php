@@ -8,8 +8,11 @@
 
 namespace PlayStore\Controller;
 
+use \PlayStore\Model\Entities\PlayList;
+use \PlayStore\Model\Dao\PlayListStore;
+
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../dao/PlayListStore.php');
+include(dirname(__FILE__).'/../model/dao/PlayListStore.php');
 /**
  * Description of PlayListFileUploadHandler
  *
@@ -22,7 +25,7 @@ class PlayListFormHandler extends Controller{
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         
-        $playList = new \PlayStore\Model\PlayList();
+        $playList = new PlayList();
         $playList->setUser_id($this->getCurrentUserId());
         if (!$name){
             $this->errors .= "name is required\n";
@@ -35,14 +38,15 @@ class PlayListFormHandler extends Controller{
         
         
         
-
-        if (!empty($_FILES["myFile"])) {
+        if(is_uploaded_file($_FILES['myFile']['tmp_name'])) {
             $myFile = $_FILES["myFile"];
-
+            
+                    
             if ($myFile["error"] !== UPLOAD_ERR_OK) {
                 $this->errors .= "An error occurred.";
                 return;
             }
+            
 
             // ensure a safe filename
             //$name = preg_replace("/[^A-Z0-9._-]/i", "_", $myFile["name"]);
@@ -71,13 +75,15 @@ class PlayListFormHandler extends Controller{
             
             $playList->setPicture($name);
         }
+
         
         //all required fields are ok
         if (!$this->hasErrors()){
             
             
-            $ok = \PlayStore\Dao\PlayListStore::save($playList);
+            $ok = PlayListStore::save($playList);
             
+
             
             if(!$ok){
                 $this->errors .= "error while saving to database";
@@ -89,11 +95,13 @@ class PlayListFormHandler extends Controller{
              //replay form when error occurs
              $view = new \PlayStore\View\View('PlayListFormView'); 
              $view->render(
-                array('object'=> $playList,
+                array('playList'=> $playList,
                        'errors'=> $this->errors));
         }else{
             header("Location: /index.php?action=PlayList",true,303);
         }
+        
+        echo "kikou";
 
     }
 

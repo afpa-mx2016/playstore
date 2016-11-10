@@ -6,14 +6,14 @@
  * and open the template in the editor.
  */
 
-namespace PlayStore\Dao;
+namespace PlayStore\Model\Dao;
 
 require_once(dirname(__FILE__).'/DB.php');
 
-require_once(dirname(__FILE__).'/../model/PlayList.class.php');
-require_once(dirname(__FILE__).'/../model/Track.class.php');
+require_once(dirname(__FILE__).'/../entities/PlayList.class.php');
+require_once(dirname(__FILE__).'/../entities/Track.class.php');
 
-use \PlayStore\Model\PlayList as PlayList;
+use \PlayStore\Model\Entities\PlayList as PlayList;
 
 
 use \PDO as PDO;
@@ -118,7 +118,7 @@ class PlayListStore {
         $stmt->bindValue(':playlist_id', $playlist_id);
         $stmt->execute();
 
-	$playLists = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, \PlayStore\Model\Track::class);
+	$playLists = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, \PlayStore\Model\Entities\Track::class);
 		   
 	return $playLists;
     }

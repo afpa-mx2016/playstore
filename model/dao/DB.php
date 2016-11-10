@@ -2,7 +2,7 @@
 
 
 //namespace Video\dao;
-namespace PlayStore\Dao;
+namespace PlayStore\Model\Dao;
 
 use \PDO as PDO;
 

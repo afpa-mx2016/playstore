@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace PlayStore\Model;
+namespace PlayStore\Model\Entities;
 
 /**
  * Description of User

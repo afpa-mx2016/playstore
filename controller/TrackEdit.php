@@ -2,10 +2,10 @@
 
 namespace PlayStore\Controller;
 
-
+use \PlayStore\Model\Dao\TrackStore;
 
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../dao/TrackStore.php');
+include(dirname(__FILE__).'/../model/dao/TrackStore.php');
 
 
 
@@ -18,7 +18,7 @@ class TrackEdit extends Controller {
         if ($id){
 
             //fetch track
-            $track = \PlayStore\Dao\TrackStore::getTrackById($id);
+            $track = TrackStore::getTrackById($id);
 
             if (!$track){
                 $this->errors = 'something went wrong with edit with id:' + $id;
@@ -27,7 +27,7 @@ class TrackEdit extends Controller {
                 //render view
                 $view = new \PlayStore\View\View('TrackFormView'); 
 
-                $view->render(array('object'=> $track));
+                $view->render(array('track'=> $track));
 
             }
 

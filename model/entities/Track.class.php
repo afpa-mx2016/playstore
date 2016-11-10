@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayStore\Model;
+namespace PlayStore\Model\Entities;
 /**
  * Description of newPHPClass
  *

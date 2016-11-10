@@ -6,12 +6,12 @@
  * and open the template in the editor.
  */
 
-namespace PlayStore\Dao;
+namespace PlayStore\Model\Dao;
 
 require(dirname(__FILE__).'/DB.php');
-require(dirname(__FILE__).'/../model/User.class.php');
+require(dirname(__FILE__).'/../entities/User.class.php');
 
-use \PlayStore\Model\User as User;
+use \PlayStore\Model\Entities\User;
 use \PDO as PDO;
 /**
  * Description of UserStore

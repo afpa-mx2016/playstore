@@ -9,7 +9,7 @@
 namespace PlayStore\Controller;
 
 include(dirname(__FILE__).'/Controller.class.php');
-include(dirname(__FILE__).'/../dao/PlayListStore.php');
+include(dirname(__FILE__).'/../model/dao/PlayListStore.php');
 
 
 /**
@@ -24,7 +24,7 @@ class PlayList extends Controller{
         $view = new \PlayStore\View\View('PlayListView');
 
 
-        $playlists = \PlayStore\Dao\PlayListStore::getPlayLists($this->current_userid);
+        $playlists = \PlayStore\Model\Dao\PlayListStore::getPlayLists($this->current_userid);
 
         //render view
 

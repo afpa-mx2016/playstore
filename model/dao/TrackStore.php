@@ -1,11 +1,11 @@
 <?php
 
-namespace PlayStore\Dao;
+namespace PlayStore\Model\Dao;
 
 require_once(dirname(__FILE__).'/DB.php');
-require(dirname(__FILE__).'/../model/Track.class.php');
+require(dirname(__FILE__).'/../entities/Track.class.php');
 
-use \PlayStore\Model\Track as Track;
+use \PlayStore\Model\Entities\Track as Track;
 use \PDO as PDO;
 /**
  * Description of TrackStore

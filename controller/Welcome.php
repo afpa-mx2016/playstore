@@ -17,7 +17,6 @@ class Welcome extends Controller {
     
     public function run(){
         
-        $view = new \PlayStore\View\View('WelcomeView'); 
-        $view->render(NULL); //
+        $this->render('WelcomeView'); //
     }
 }

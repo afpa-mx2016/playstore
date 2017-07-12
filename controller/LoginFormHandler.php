@@ -68,9 +68,8 @@ class LoginFormHandler extends Controller{
         
         if ($this->hasErrors()){
             //rebuild the form
-            $view = new \PlayStore\View\View('LoginFormView'); 
-            //$view->setContent(new Track());
-            $view->render(array("errors"=> $this->errors)); 
+            $this->render('LoginFormView', array("errors"=> $this->errors));
+
         }
     }
 

@@ -29,8 +29,7 @@ class TrackList extends Controller {
        
         //var_dump($tracks);
         //render view
-        $view = new \PlayStore\View\View('TrackListView');
-        $view->render(array(
+        $this->render('TrackListView', array(
             "tracks"=>$tracks,
             "search"=> $searchStr,
             "playlists"=> $playlists,

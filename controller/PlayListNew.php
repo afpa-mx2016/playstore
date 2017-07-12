@@ -8,8 +8,6 @@
 
 namespace PlayStore\Controller;
 
-use \PlayStore\Model\Track as Track;
-
 
 include(dirname(__FILE__).'/Controller.class.php');
 
@@ -20,8 +18,7 @@ class PlayListNew extends Controller {
     
     public function run(){
         
-        $view = new \PlayStore\View\View('PlayListFormView'); 
-        $view->render(NULL); //we pass a fake object 
+        $this->render('PlayListFormView'); //we pass a fake object 
     }
 }
 

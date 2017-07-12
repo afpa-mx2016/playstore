@@ -19,6 +19,10 @@ abstract class Controller implements IController {
     protected $current_username;
     protected $isAdmin;
       
+    public function render($template, $data = NULL){
+        //we load template file, $data will be available within template
+        require(PATH_VIEW.'/'.$template.'.php');
+    }
    
     public function hasErrors(){
         return (!empty($this->errors));

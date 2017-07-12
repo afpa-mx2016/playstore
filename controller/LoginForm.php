@@ -20,9 +20,7 @@ class LoginForm extends Controller{
     public function run() {
         
         
-        $view = new \PlayStore\View\View('LoginFormView'); 
-        //$view->setContent(new Track());
-        $view->render(NULL); 
+        $this->render('LoginFormView'); 
         
     }
 

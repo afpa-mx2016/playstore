@@ -24,10 +24,8 @@ class TrackEdit extends Controller {
                 $this->errors = 'something went wrong with edit with id:' + $id;
             }else{
 
-                //render view
-                $view = new \PlayStore\View\View('TrackFormView'); 
 
-                $view->render(array('track'=> $track));
+                $this->render('TrackFormView', array('track'=> $track));
 
             }
 

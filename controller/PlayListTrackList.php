@@ -28,8 +28,8 @@ class PlayListTrackList extends Controller {
             $playList->setTracks($tracks);
 
             //render view
-            $view = new \PlayStore\View\View('PlayListItemsView');
-            $view->render(array("playList"=>$playList, "errors" =>$this->errors));
+
+            $this->render('PlayListItemsView',array("playList"=>$playList, "errors" =>$this->errors));
         }
         
         

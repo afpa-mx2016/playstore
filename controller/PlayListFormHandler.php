@@ -93,9 +93,7 @@ class PlayListFormHandler extends Controller{
         
         if($this->hasErrors()){
              //replay form when error occurs
-             $view = new \PlayStore\View\View('PlayListFormView'); 
-             $view->render(
-                array('playList'=> $playList,
+             $this->render('PlayListFormView', array('playList'=> $playList,
                        'errors'=> $this->errors));
         }else{
             header("Location: /index.php?action=PlayList",true,303);

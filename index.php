@@ -3,8 +3,7 @@
 namespace PlayStore;
 
 include('config.inc.php');
-//load view class definition file
-include('view/View.php');
+
 
 //default controller
 $ctrl = 'Welcome';
@@ -72,8 +71,7 @@ if ($direct_rendering){ //don't render with template
         "isadmin" => $controller->isAdmin()
         );
     //load view
-    $tpl = new View\View('MainTemplate');
+    require(PATH_VIEW.'/MainTemplate.php');
 
-    $tpl->render($data);
 }
 

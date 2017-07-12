@@ -14,8 +14,7 @@ class TrackNew extends Controller {
     
     public function run(){
         
-        $view = new \PlayStore\View\View('TrackFormView'); 
-        $view->render(array('track'=> new Track())); //we pass a fake object 
+        $view->render('TrackFormView', array('track'=> new Track())); //we pass a fake object 
     }
 }
 

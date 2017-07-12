@@ -59,9 +59,8 @@ class TrackFormHandler extends Controller {
 
         if($this->hasErrors()){
              //replay form when error occurs
-             $view = new \PlayStore\View\View('TrackFormView'); 
-             $view->render(
-                array('object'=> $track,
+             $this->render('TrackFormView', 
+                array('track'=> $track,
                        'errors'=> $this->errors));
         }else{
             header("Location: /index.php?action=TrackList",true,303);

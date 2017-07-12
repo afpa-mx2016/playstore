@@ -21,14 +21,12 @@ class PlayList extends Controller{
     //put your code here
     public function run() {
         
-        $view = new \PlayStore\View\View('PlayListView');
-
 
         $playlists = \PlayStore\Model\Dao\PlayListStore::getPlayLists($this->current_userid);
 
         //render view
 
-        $view->render(array("playlists"=>$playlists));
+        $this->render('PlayListView',array("playlists"=>$playlists));
         
         
     }
